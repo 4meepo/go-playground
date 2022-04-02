@@ -26,7 +26,8 @@ type Language uint64
 
 type LanguageMode uint64
 
-func SupportedLanguges() []string {
+// SupportedLanguages 支持的语言
+func SupportedLanguages() []string {
 	return []string{
 		"Chinese",
 		"TraditionalChinese",
@@ -46,6 +47,7 @@ func (m LanguageMode) SupportChinese() bool {
 func Mode(ls ...Language) LanguageMode {
 	var rtn LanguageMode
 	// for range 会帮我们判断ls是否为nil
+
 	for _, l := range ls {
 		rtn = rtn | LanguageMode(l)
 	}
