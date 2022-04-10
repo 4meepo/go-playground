@@ -45,4 +45,6 @@ func TestTimeLayout(t *testing.T) {
 	eightHours, _ := time.ParseDuration("8h")
 	assert.Equal(t, eightHours, parsedTime.Sub(parsedTime2))
 
+	// 通过in可以将时间转换为指定时区的时间
+	fmt.Println(time.Now().In(time.UTC))
 }
