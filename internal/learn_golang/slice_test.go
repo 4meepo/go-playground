@@ -3,6 +3,8 @@ package learn_golang
 import (
 	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // go中只有值传递！！！！
@@ -16,6 +18,12 @@ func TestSlice(t *testing.T) {
 	var dataArrayPointer = &dataArray
 	*dataArrayPointer = []Data{{1, "a"}}
 	fmt.Printf("%v %p\n", dataArray, dataArray)
+
+	// append 修改的slice需要接收返回值
+	intSlice := []int{1, 2, 3}
+	intSlice2 := append(intSlice, 4)
+	assert.Len(t, intSlice, 3)
+	assert.Len(t, intSlice2, 4)
 
 }
 
