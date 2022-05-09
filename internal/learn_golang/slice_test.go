@@ -55,7 +55,17 @@ func TestSelectSlice(t *testing.T) {
 	assert.Equal(t, 6, m2[1])
 
 	// 如果访问数组下标超过len(), 会越界报错
-	m2[4] = 100
-	assert.Equal(t, 100, sl[9])
+	m2[1] = 99
+	assert.Equal(t, 99, sl[6])
 
+}
+
+func TestDeleteItem(t *testing.T) {
+	arr := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	// 删除第5,6
+	assert.Equal(t, 10, cap(arr[:5])) // 第三个元素为空时，默认为cap()
+
+	deleted := append(arr[:5:5], arr[7:]...)
+	fmt.Println(deleted)
+	fmt.Println(arr)
 }
