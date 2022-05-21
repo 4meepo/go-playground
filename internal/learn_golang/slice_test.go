@@ -42,7 +42,7 @@ func TestSelectSlice(t *testing.T) {
 
 	// 选择最终两个
 	l2 := sl[len(sl)-2:]
-	assert.Equal(t, []int{8, 9}, l2)
+	assert.Equal(t, []int{8, 9}, l2) // 111111111111111
 
 	// 未发生任何数组复制, 切片底层是同一个数组, 所以会影响原数组
 	l2[0] = 100
@@ -56,7 +56,7 @@ func TestSelectSlice(t *testing.T) {
 
 	// 如果访问数组下标超过len(), 会越界报错
 	m2[1] = 99
-	assert.Equal(t, 99, sl[6])
+	assert.Equal(t, 99, sl[6]) //  1111111111111111
 
 }
 
