@@ -16,6 +16,9 @@ func TestPointer(t *testing.T) {
 	dp := &d
 	*dp = Dog{"cat"}
 	assert.Equal(t, "cat", d.Name)
+
+	var nilIntPointer *int
+	assert.Nil(t, nilIntPointer)
 }
 
 func changeValue(a *Dog) {
