@@ -69,3 +69,10 @@ func TestDeleteItem(t *testing.T) {
 	fmt.Println(deleted)
 	fmt.Println(arr)
 }
+
+func TestDeclareSlice(t *testing.T) {
+	var s []int
+	assert.Nil(t, s, "这种声明方式的 slice 的值为nil")
+
+	s[0] = 1 // 这里会 index out of range
+}
