@@ -1,6 +1,7 @@
 package learn_golang
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -19,6 +20,10 @@ func TestPointer(t *testing.T) {
 
 	var nilIntPointer *int
 	assert.Nil(t, nilIntPointer)
+
+	pointerByNew := new(Dog)
+	assert.NotNil(t, pointerByNew)
+	assert.Equal(t, "", pointerByNew.Name)
 }
 
 func changeValue(a *Dog) {
@@ -27,4 +32,17 @@ func changeValue(a *Dog) {
 
 type Dog struct {
 	Name string
+}
+
+func TestIntPointer(t *testing.T) {
+	a := new(int)
+	fmt.Println(a == nil)
+
+	fn := func(ap *int) {
+		*ap = 0
+	}
+
+	fn(a)
+
+	fmt.Println(a == nil)
 }
