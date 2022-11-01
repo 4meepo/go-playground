@@ -24,6 +24,9 @@ func TestTime(t *testing.T) {
 	l2Time := time.Now().In(l2)
 	fmt.Println(l2Time.String())
 
+	zeroTime := time.Time{}
+	assert.True(t, zeroTime.IsZero())
+
 }
 
 func TestTimeLayout(t *testing.T) {
