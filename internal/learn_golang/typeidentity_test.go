@@ -172,3 +172,25 @@ func TestCompareUncomparableStruct(t *testing.T) {
 		}, "comparing uncomparable type error")
 	}
 }
+
+type customTypeA struct {
+	name string
+}
+
+func (customTypeA) String() string {
+	return "customTypeA"
+}
+
+type customTypeB struct {
+	name string
+}
+
+func (customTypeB) String() string {
+	return "customTypeB"
+}
+
+func TestA(t *testing.T) {
+	a := customTypeA{}
+	aa := a
+	fmt.Println(a == aa)
+}
