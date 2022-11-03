@@ -128,10 +128,18 @@ type comparableType struct {
 	age  int
 }
 
+func (comparableType) String() string {
+	return "comparableType"
+}
+
 type uncomparableType struct {
 	name string
 	age  int
 	meta map[string]string
+}
+
+func (uncomparableType) String() string {
+	return "uncomparableType"
 }
 
 func TestCompareUncomparableStruct(t *testing.T) {
@@ -150,5 +158,17 @@ func TestCompareUncomparableStruct(t *testing.T) {
 		// ua := uncomparableType{}
 		// ub := uncomparableType{}
 		// assert.False(t, ua == ub)
+	}
+
+	{
+		var aa fmt.Stringer = comparableType{}
+		var bb fmt.Stringer = uncomparableType{}
+		var cc fmt.Stringer = uncomparableType{}
+		assert.False(t, aa == bb)
+		assert.Panics(t, func() {
+			//A comparison of two interface values with identical dynamic types causes a run-time panic if values of that type are not comparable. //
+			// This behavior applies not only to direct interface value comparisons but also when comparing arrays of interface values or structs with interface-valued fields.
+			_ = bb == cc
+		}, "comparing uncomparable type error")
 	}
 }
