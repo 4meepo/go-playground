@@ -76,3 +76,27 @@ func TestDeclareSlice(t *testing.T) {
 
 	// s[0] = 1 // 这里会 index out of range
 }
+
+func TestAppendSlice(t *testing.T) {
+	s1 := make([]int, 0, 10)
+
+	fmt.Println(len(s1)) // 0
+	s2 := append(s1, 1, 2, 3)
+	fmt.Println(len(s1))
+	fmt.Println(len(s2))
+
+	fmt.Println(s2[2])
+
+	ss := make([]int, 0, 3)
+
+	go func() {
+		ss1 := append(ss, 1)
+		fmt.Println(ss1)
+	}()
+
+	go func() {
+		ss1 := append(ss, 1)
+		fmt.Println(ss1)
+	}()
+
+}
