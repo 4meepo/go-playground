@@ -1,7 +1,16 @@
 package main
 
-func main() {
+import (
+	"fmt"
+	"time"
+)
 
-	var c chan struct{}
-	<-c
+func main() {
+	i := 0
+	go func() {
+		i++
+	}()
+	t := time.NewTimer(time.Second)
+	<-t.C
+	fmt.Println(i)
 }

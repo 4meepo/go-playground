@@ -100,3 +100,12 @@ func TestAppendSlice(t *testing.T) {
 	}()
 
 }
+
+func TestAppendInLoop(t *testing.T) {
+	s1 := make([]int, 10, 10)
+
+	for _, v := range s1 {
+		s1 = append(s1, 100)
+		fmt.Println(v)
+	}
+}
