@@ -14,7 +14,7 @@ func (h intHeap) Len() int {
 }
 
 func (h intHeap) Less(i int, j int) bool {
-	return h[i] < h[j]
+	return h[i] > h[j]
 }
 
 // Swap swaps the elements with indexes i and j.
