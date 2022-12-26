@@ -8,22 +8,19 @@ import (
 )
 
 func TestPointer(t *testing.T) {
-	var d Dog
-	changeValue(&d)
-	assert.Equal(t, "dd", d.Name)
-	d = Dog{"dog"}
-	assert.Equal(t, "dog", d.Name)
 
-	dp := &d
-	*dp = Dog{"cat"}
-	assert.Equal(t, "cat", d.Name)
+	dogTrustBridge := Dog{Name: "trust bridge", FriendsMap: make(map[string]Dog)}
+	dogTrustBridge.changeName("mother fucker trustbridge")
+	assert.Equal(t, "trust bridge", dogTrustBridge.Name)
 
-	var nilIntPointer *int
-	assert.Nil(t, nilIntPointer)
+	assert.Equal(t, 0, len(dogTrustBridge.Friends))
+	dogTrustBridge.addFriend("wework")
+	assert.Equal(t, 1, len(dogTrustBridge.Friends))
 
-	pointerByNew := new(Dog)
-	assert.NotNil(t, pointerByNew)
-	assert.Equal(t, "", pointerByNew.Name)
+	assert.Equal(t, 0, len(dogTrustBridge.FriendsMap))
+	dogTrustBridge.addFriend2("wework")
+	assert.Equal(t, 1, len(dogTrustBridge.FriendsMap))
+
 }
 
 func changeValue(a *Dog) {
@@ -31,7 +28,21 @@ func changeValue(a *Dog) {
 }
 
 type Dog struct {
-	Name string
+	Name       string
+	Friends    []Dog
+	FriendsMap map[string]Dog
+}
+
+func (d Dog) changeName(name string) {
+	d.Name = name
+}
+
+func (d *Dog) addFriend(name string) {
+	d.Friends = append(d.Friends, Dog{Name: name})
+}
+
+func (d Dog) addFriend2(name string) {
+	d.FriendsMap[name] = Dog{Name: name}
 }
 
 func TestIntPointer(t *testing.T) {

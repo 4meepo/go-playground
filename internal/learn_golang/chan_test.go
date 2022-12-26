@@ -51,3 +51,26 @@ func TestMergeChan(t *testing.T) {
 	fmt.Println("done") // will never be exectured, 因为 range loop channel时, channel只有关闭后, range才会退出
 
 }
+
+func TestReadClosedChannel(t *testing.T) {
+	c := make(chan bool, 3)
+	c <- true
+	c <- true
+	close(c)
+
+	v, ok := <-c
+	fmt.Println(v, ok)
+
+	v, ok = <-c
+	fmt.Println(v, ok)
+
+	// 当且仅当 channel closed后, 读取到channel的零值时, 第二个参数为false
+	v, ok = <-c
+	fmt.Println(v, ok)
+
+	v, ok = <-c
+	fmt.Println(v, ok)
+
+	// 关闭closed的channel,会panic
+	//close(c)
+}
