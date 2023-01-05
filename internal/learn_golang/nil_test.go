@@ -81,3 +81,20 @@ func giveMeAPerson() *person {
 	var p *person
 	return p
 }
+
+// 测试 nil != nil
+func TestNilNotEqualsNil(t *testing.T) {
+	e := returnANil(10)
+
+	assert.False(t, e == nil)
+	assert.True(t, e == (*MyError)(nil))
+}
+
+func returnANil(i int) error {
+	var rtn *MyError
+	if i >= 0 {
+		return rtn
+	}
+	rtn = &MyError{}
+	return rtn
+}
