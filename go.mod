@@ -3,14 +3,16 @@ module go-playground
 go 1.19
 
 require (
+	github.com/IBM/fp-go v1.0.21
 	github.com/ThreeDotsLabs/watermill v1.2.0
 	github.com/ThreeDotsLabs/watermill-redisstream v1.0.0
+	github.com/antonmedv/expr v1.14.3
 	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
 	github.com/guptarohit/asciigraph v0.5.5
 	github.com/pkg/errors v0.9.1
 	github.com/redis/go-redis/v9 v9.0.3
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
@@ -23,6 +25,7 @@ require (
 	github.com/lithammer/shortuuid/v3 v3.0.7 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/samber/mo v1.11.0 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	golang.org/x/net v0.12.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
